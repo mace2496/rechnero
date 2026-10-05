@@ -1,0 +1,62 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Converter from "../../components/Converter.astro";
+import { converters } from "../../data/converters";
+
+export function getStaticPaths() {
+  return converters.map((converter) => ({
+    params: {
+      slug: converter.slug,
+    },
+    props: {
+      converter,
+    },
+  }));
+}
+
+const { converter } = Astro.props;
+
+const title = `${converter.name} – online umrechnen | Rechnero`;
+
+const description = `Mit dem kostenlosen ${converter.name} von Rechnero kannst du Werte schnell und einfach umrechnen.`;
+---
+
+<Layout title={title} description={description}>
+  <div class="container">
+    <section class="hero">
+      <p>Rechnero · Umrechner</p>
+
+      <h1>{converter.name}</h1>
+
+      <p>
+        {converter.description}
+      </p>
+    </section>
+
+    <section>
+      <Converter converter={converter} />
+    </section>
+
+    <section class="content">
+      <h2>{converter.name}</h2>
+
+      <p>
+        Mit unserem kostenlosen {converter.name} kannst du
+        Werte schnell und einfach zwischen verschiedenen
+        Maßeinheiten umrechnen.
+      </p>
+
+      <h2>Verfügbare Einheiten</h2>
+
+      <ul>
+        {
+          converter.units.map((unit) => (
+            <li>
+              {unit.name} ({unit.symbol})
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
