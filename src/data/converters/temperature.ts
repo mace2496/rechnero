@@ -10,6 +10,12 @@ export const temperatureConverter: ConverterConfig = {
   description:
     "Temperaturen schnell und kostenlos zwischen Celsius, Fahrenheit und Kelvin umrechnen.",
 
+  intro:
+    "Mit unserem Temperaturumrechner kannst du Temperaturen schnell und einfach zwischen Celsius, Fahrenheit und Kelvin umrechnen.",
+
+  seoDescription:
+    "Temperaturumrechner für Celsius, Fahrenheit und Kelvin. Temperaturen schnell, kostenlos und einfach online umrechnen.",
+
   type: "temperature",
 
   units: [

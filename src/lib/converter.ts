@@ -11,6 +11,8 @@ export interface ConverterConfig {
   slug: string;
   name: string;
   description: string;
+  intro: string;
+  seoDescription: string;
   units: Unit[];
   type?: "linear" | "temperature";
 }

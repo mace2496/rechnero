@@ -16,9 +16,9 @@ export function getStaticPaths() {
 
 const { converter } = Astro.props;
 
-const title = `${converter.name} – online umrechnen | Rechnero`;
+const title = `${converter.name} | Rechnero`;
 
-const description = `Mit dem kostenlosen ${converter.name} von Rechnero kannst du Werte schnell und einfach umrechnen.`;
+const description = converter.seoDescription;
 ---
 
 <Layout title={title} description={description}>
@@ -40,11 +40,9 @@ const description = `Mit dem kostenlosen ${converter.name} von Rechnero kannst d
     <section class="content">
       <h2>{converter.name}</h2>
 
-      <p>
-        Mit unserem kostenlosen {converter.name} kannst du
-        Werte schnell und einfach zwischen verschiedenen
-        Maßeinheiten umrechnen.
-      </p>
+    <p>
+      {converter.intro}
+    </p>
 
       <h2>Verfügbare Einheiten</h2>
 

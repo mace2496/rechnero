@@ -8,6 +8,12 @@ export const lengthConverter: ConverterConfig = {
   description:
     "Längen schnell und kostenlos zwischen Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen umrechnen.",
 
+  intro:
+    "Mit unserem Längenumrechner kannst du Längen schnell und einfach zwischen metrischen und angloamerikanischen Maßeinheiten umrechnen.",
+
+  seoDescription:
+    "Längenumrechner für Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen. Schnell, kostenlos und einfach online umrechnen.",
+  
   units: [
     {
       id: "mm",

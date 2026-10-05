@@ -10,6 +10,12 @@ export const weightConverter: ConverterConfig = {
   description:
     "Gewichte schnell und kostenlos zwischen Milligramm, Gramm, Kilogramm, Tonnen, Unzen und Pfund umrechnen.",
 
+  intro:
+    "Mit unserem Gewichtsumrechner kannst du Gewichte schnell und einfach zwischen metrischen und angloamerikanischen Maßeinheiten umrechnen.",
+
+  seoDescription:
+    "Gewichtsumrechner für Milligramm, Gramm, Kilogramm, Tonnen, Unzen und Pfund. Schnell, kostenlos und einfach online umrechnen.",
+
   units: [
     {
       id: "mg",
