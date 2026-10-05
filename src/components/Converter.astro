@@ -1,0 +1,163 @@
+---
+import type { ConverterConfig } from "../lib/converter";
+
+interface Props {
+  converter: ConverterConfig;
+}
+
+const { converter } = Astro.props;
+
+const defaultFrom =
+  converter.units.find((unit) => unit.id === "m") ?? converter.units[0];
+
+const defaultTo =
+  converter.units.find((unit) => unit.id === "ft") ?? converter.units[1];
+---
+
+<div
+  class="converter"
+  data-converter
+  data-units={JSON.stringify(converter.units)}
+>
+  <div class="converter-grid">
+    <div class="field">
+      <label for="value">Wert</label>
+
+      <input
+        id="value"
+        data-value
+        type="number"
+        value="1"
+        step="any"
+        inputmode="decimal"
+      />
+    </div>
+
+    <div class="field">
+      <label for="from">Von</label>
+
+      <select id="from" data-from>
+        {
+          converter.units.map((unit) => (
+            <option
+              value={unit.id}
+              selected={unit.id === defaultFrom.id}
+            >
+              {unit.name} ({unit.symbol})
+            </option>
+          ))
+        }
+      </select>
+    </div>
+
+    <button
+      type="button"
+      class="swap"
+      data-swap
+      aria-label="Einheiten tauschen"
+      title="Einheiten tauschen"
+    >
+      ⇄
+    </button>
+
+    <div class="field">
+      <label for="to">Nach</label>
+
+      <select id="to" data-to>
+        {
+          converter.units.map((unit) => (
+            <option
+              value={unit.id}
+              selected={unit.id === defaultTo.id}
+            >
+              {unit.name} ({unit.symbol})
+            </option>
+          ))
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="result" data-result>
+    Ergebnis wird berechnet …
+  </div>
+
+  <button type="button" class="copy" data-copy>
+    Ergebnis kopieren
+  </button>
+</div>
+
+<script>
+  const root = document.querySelector("[data-converter]");
+
+  if (root instanceof HTMLElement) {
+    const units = JSON.parse(root.dataset.units ?? "[]");
+
+    const valueInput = root.querySelector("[data-value]");
+    const fromSelect = root.querySelector("[data-from]");
+    const toSelect = root.querySelector("[data-to]");
+    const result = root.querySelector("[data-result]");
+    const swapButton = root.querySelector("[data-swap]");
+    const copyButton = root.querySelector("[data-copy]");
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("de-DE", {
+        maximumFractionDigits: 12,
+      }).format(value);
+    }
+
+    function calculate() {
+      const value = Number(valueInput.value);
+
+      const from = units.find(
+        (unit) => unit.id === fromSelect.value
+      );
+
+      const to = units.find(
+        (unit) => unit.id === toSelect.value
+      );
+
+      if (!Number.isFinite(value) || !from || !to) {
+        result.textContent = "Bitte einen gültigen Wert eingeben.";
+        return;
+      }
+
+      const baseValue = value * from.factor;
+      const converted = baseValue / to.factor;
+
+      result.textContent =
+        `${formatNumber(converted)} ${to.symbol}`;
+    }
+
+    valueInput.addEventListener("input", calculate);
+    fromSelect.addEventListener("change", calculate);
+    toSelect.addEventListener("change", calculate);
+
+    swapButton.addEventListener("click", () => {
+      const oldFrom = fromSelect.value;
+
+      fromSelect.value = toSelect.value;
+      toSelect.value = oldFrom;
+
+      calculate();
+    });
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(
+          result.textContent ?? ""
+        );
+
+        copyButton.textContent = "Kopiert!";
+
+        setTimeout(() => {
+          copyButton.textContent = "Ergebnis kopieren";
+        }, 1500);
+      } catch {
+        copyButton.textContent = "Kopieren nicht möglich";
+      }
+    });
+
+    calculate();
+  }
+</script>

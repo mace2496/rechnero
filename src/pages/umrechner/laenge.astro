@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Converter from "../../components/Converter.astro";
+import { lengthConverter } from "../../data/converters/length";
+
+const title =
+  "Längenumrechner – Länge online umrechnen | Rechnero";
+
+const description =
+  "Mit dem kostenlosen Längenumrechner von Rechnero kannst du Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen schnell umrechnen.";
+---
+
+<Layout title={title} description={description}>
+  <div class="container">
+    <section class="hero">
+      <p>Rechnero · Umrechner</p>
+
+      <h1>Längenumrechner</h1>
+
+      <p>
+        Längen schnell und kostenlos zwischen
+        verschiedenen Maßeinheiten umrechnen.
+      </p>
+    </section>
+
+    <section>
+      <Converter converter={lengthConverter} />
+    </section>
+
+    <section class="content">
+      <h2>Längeneinheiten umrechnen</h2>
+
+      <p>
+        Mit unserem Längenumrechner kannst du Werte
+        zwischen Millimeter, Zentimeter, Meter,
+        Kilometer, Zoll, Fuß, Yard und Meilen umrechnen.
+      </p>
+
+      <h2>Häufige Umrechnungen</h2>
+
+      <ul>
+        <li>1 Meter = 100 Zentimeter</li>
+        <li>1 Kilometer = 1.000 Meter</li>
+        <li>1 Zoll = 2,54 Zentimeter</li>
+        <li>1 Fuß = 30,48 Zentimeter</li>
+        <li>1 Meile = 1.609,344 Meter</li>
+      </ul>
+    </section>
+  </div>
+</Layout>

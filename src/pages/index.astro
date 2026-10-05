@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title =
+  "Rechnero – Kostenlose Rechner & Umrechner";
+
+const description =
+  "Kostenlose Rechner und Umrechner für den Alltag.";
+---
+
+<Layout title={title} description={description}>
+  <div class="container">
+    <section class="hero">
+      <p>Rechnero</p>
+
+      <h1>Kostenlose Rechner & Umrechner</h1>
+
+      <p>
+        Praktische Rechner und Umrechner für den Alltag –
+        schnell, kostenlos und einfach zu bedienen.
+      </p>
+    </section>
+
+    <section class="content">
+      <h2>Umrechner</h2>
+
+      <ul>
+        <li>
+          <a href="/umrechner/laenge/">
+            Längenumrechner
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</Layout>
