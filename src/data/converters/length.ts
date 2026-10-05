@@ -2,7 +2,7 @@ import type { ConverterConfig } from "../../lib/converter";
 
 export const lengthConverter: ConverterConfig = {
   id: "length",
-
+  slug: "laenge",
   name: "Längenumrechner",
 
   description:

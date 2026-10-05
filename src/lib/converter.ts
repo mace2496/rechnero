@@ -7,6 +7,7 @@ export interface Unit {
 
 export interface ConverterConfig {
   id: string;
+  slug: string;
   name: string;
   description: string;
   units: Unit[];
