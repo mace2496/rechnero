@@ -1,5 +1,8 @@
 ---
-import type { ConverterConfig } from "../lib/converter";
+import {
+  convert,
+  type ConverterConfig,
+} from "../lib/converter";
 
 interface Props {
   converter: ConverterConfig;
@@ -18,6 +21,7 @@ const defaultTo =
   class="converter"
   data-converter
   data-units={JSON.stringify(converter.units)}
+  data-type={converter.type ?? "linear"}
 >
   <div class="converter-grid">
     <div class="field">
@@ -92,6 +96,7 @@ const defaultTo =
 
   if (root instanceof HTMLElement) {
     const units = JSON.parse(root.dataset.units ?? "[]");
+    const type = root.dataset.type ?? "linear";
 
     const valueInput = root.querySelector("[data-value]");
     const fromSelect = root.querySelector("[data-from]");
@@ -122,8 +127,19 @@ const defaultTo =
         return;
       }
 
-      const baseValue = value * from.factor;
-      const converted = baseValue / to.factor;
+      let converted;
+
+      if (type === "temperature") {
+        const baseValue =
+          value * from.factor + (from.offset ?? 0);
+
+        converted =
+          (baseValue - (to.offset ?? 0)) / to.factor;
+      } else {
+        const baseValue = value * from.factor;
+
+        converted = baseValue / to.factor;
+      }
 
       result.textContent =
         `${formatNumber(converted)} ${to.symbol}`;
