@@ -3,6 +3,7 @@ import { weightConverter } from "./weight";
 import { temperatureConverter } from "./temperature";
 import { volumeConverter } from "./volume";
 import { areaConverter } from "./area";
+import { speedConverter } from "./speed";
 
 export const converters = [
   lengthConverter,
@@ -10,4 +11,5 @@ export const converters = [
   temperatureConverter,
   volumeConverter,
   areaConverter,
+  speedConverter,
 ];
