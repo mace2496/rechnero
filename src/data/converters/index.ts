@@ -6,6 +6,7 @@ import { areaConverter } from "./area";
 import { speedConverter } from "./speed";
 import { timeConverter } from "./time";
 import { dataConverter } from "./data";
+import { pressureConverter } from "./pressure";
 
 export const converters = [
   lengthConverter,
@@ -16,4 +17,5 @@ export const converters = [
   speedConverter,
   timeConverter,
   dataConverter,
+  pressureConverter,
 ];
