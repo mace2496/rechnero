@@ -129,17 +129,33 @@ const defaultTo =
 
       let converted;
 
-      if (type === "temperature") {
-        const baseValue =
-          value * from.factor + (from.offset ?? 0);
+if (type === "fuel") {
+  if (value <= 0) {
+    result.textContent =
+      "Bitte einen Wert größer als 0 eingeben.";
+    return;
+  }
 
-        converted =
-          (baseValue - (to.offset ?? 0)) / to.factor;
-      } else {
-        const baseValue = value * from.factor;
+  const baseValue =
+    from.id === "l100km"
+      ? 100 / value
+      : value * from.factor;
 
-        converted = baseValue / to.factor;
-      }
+  converted =
+    to.id === "l100km"
+      ? 100 / baseValue
+      : baseValue / to.factor;
+} else if (type === "temperature") {
+  const baseValue =
+    value * from.factor + (from.offset ?? 0);
+
+  converted =
+    (baseValue - (to.offset ?? 0)) / to.factor;
+} else {
+  const baseValue = value * from.factor;
+
+  converted = baseValue / to.factor;
+}
 
       result.textContent =
         `${formatNumber(converted)} ${to.symbol}`;

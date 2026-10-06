@@ -12,6 +12,7 @@ import { powerConverter } from "./power";
 import { forceConverter } from "./force";
 import { angleConverter } from "./angle";
 import { frequencyConverter } from "./frequency";
+import { fuelConverter } from "./fuel";
 
 export const converters = [
   lengthConverter,
@@ -28,4 +29,5 @@ export const converters = [
   forceConverter,
   angleConverter,
   frequencyConverter,
+  fuelConverter,
 ];
