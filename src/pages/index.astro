@@ -6,39 +6,94 @@ const title =
   "Rechnero – Kostenlose Rechner & Umrechner";
 
 const description =
-  "Kostenlose Rechner und Umrechner für den Alltag.";
+  "Kostenlose Rechner und Umrechner für den Alltag – schnell, einfach und kostenlos online.";
+
+const featuredConverters = converters.slice(0, 6);
 ---
 
 <Layout title={title} description={description}>
   <div class="container">
-    <section class="hero">
-      <p>Rechnero</p>
+    <section class="home-hero">
+      <p class="eyebrow">Rechnero</p>
 
-      <h1>Kostenlose Rechner & Umrechner</h1>
+      <h1>
+        Kostenlose Rechner<br />
+        & Umrechner
+      </h1>
 
-      <p>
-        Praktische Rechner und Umrechner für den Alltag –
-        schnell, kostenlos und einfach zu bedienen.
+      <p class="home-intro">
+        Praktische Online-Rechner und Umrechner für Alltag,
+        Technik und Beruf – schnell, kostenlos und einfach zu bedienen.
       </p>
     </section>
 
-    <section class="content">
-      <h2>Umrechner</h2>
+    <section class="home-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Umrechner</p>
+
+          <h2>Einheiten einfach umrechnen</h2>
+        </div>
+
+        <a href="#alle-umrechner">
+          Alle Umrechner
+        </a>
+      </div>
 
       <div class="tool-list">
-  {
-    converters.map((converter) => (
-      <a
-        href={`/umrechner/${converter.slug}/`}
-        class="tool-card"
-      >
-        <h3>{converter.name}</h3>
+        {
+          featuredConverters.map((converter) => (
+            <a
+              href={`/umrechner/${converter.slug}/`}
+              class="tool-card"
+            >
+              <h3>{converter.name}</h3>
 
-        <p>{converter.description}</p>
-      </a>
-    ))
-  }
-</div>
+              <p>{converter.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="home-section"
+      id="alle-umrechner"
+    >
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Übersicht</p>
+
+          <h2>Alle Umrechner</h2>
+        </div>
+      </div>
+
+      <div class="tool-list">
+        {
+          converters.map((converter) => (
+            <a
+              href={`/umrechner/${converter.slug}/`}
+              class="tool-card"
+            >
+              <h3>{converter.name}</h3>
+
+              <p>{converter.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="home-section home-info">
+      <p class="eyebrow">Warum Rechnero?</p>
+
+      <h2>Schnell. Einfach. Kostenlos.</h2>
+
+      <p>
+        Rechnero bietet praktische Rechner und Umrechner,
+        die ohne Anmeldung und direkt im Browser genutzt
+        werden können.
+      </p>
     </section>
   </div>
 </Layout>

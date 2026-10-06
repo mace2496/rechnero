@@ -52,12 +52,23 @@ a {
   text-decoration: none;
 }
 
-.site-header nav a {
-  text-decoration: none;
-  color: #4b5563;
+.main-nav {
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
 }
 
-.site-header nav a:hover {
+.main-nav a {
+  color: #4b5563;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.main-nav a:hover {
   color: #111827;
 }
 
@@ -247,6 +258,20 @@ select:focus {
   }
 }
 
+@media (max-width: 600px) {
+  .header-inner {
+    min-height: 64px;
+  }
+
+  .main-nav {
+    gap: 14px;
+  }
+
+  .main-nav a {
+    font-size: 0.9rem;
+  }
+}
+
 /* Tool cards */
 
 .tool-list {
@@ -288,4 +313,160 @@ select:focus {
   margin: 8px 0 0;
 
   color: #6b7280;
+}
+
+.home-hero {
+  padding-block: 72px 64px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+
+  color: #6b7280;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-hero h1 {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.home-intro {
+  max-width: 680px;
+
+  margin: 24px 0 0;
+
+  color: #4b5563;
+
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.home-section {
+  padding-block: 48px;
+}
+
+.section-heading {
+  display: flex;
+
+  align-items: end;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.section-heading a {
+  flex-shrink: 0;
+
+  color: #4b5563;
+
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.section-heading a:hover {
+  color: #111827;
+  text-decoration: underline;
+}
+
+.tool-list {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.tool-card {
+  display: block;
+
+  padding: 24px;
+
+  border: 1px solid #d8dde3;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #9ca3af;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.tool-card h3 {
+  margin: 0;
+
+  font-size: 1.2rem;
+}
+
+.tool-card p {
+  margin: 8px 0 0;
+
+  color: #6b7280;
+}
+
+.home-info {
+  max-width: 760px;
+
+  padding-block: 72px;
+}
+
+.home-info h2 {
+  margin: 0;
+
+  font-size: 2rem;
+}
+
+.home-info > p:last-child {
+  margin-top: 16px;
+
+  color: #4b5563;
+}
+
+@media (max-width: 700px) {
+  .home-hero {
+    padding-block: 48px 40px;
+  }
+
+  .section-heading {
+    align-items: start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .tool-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-section {
+    padding-block: 36px;
+  }
 }
