@@ -10,6 +10,7 @@ import { pressureConverter } from "./pressure";
 import { energyConverter } from "./energy";
 import { powerConverter } from "./power";
 import { forceConverter } from "./force";
+import { angleConverter } from "./angle";
 
 export const converters = [
   lengthConverter,
@@ -24,4 +25,5 @@ export const converters = [
   energyConverter,
   powerConverter,
   forceConverter,
+  angleConverter,
 ];
