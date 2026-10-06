@@ -9,6 +9,7 @@ import { dataConverter } from "./data";
 import { pressureConverter } from "./pressure";
 import { energyConverter } from "./energy";
 import { powerConverter } from "./power";
+import { forceConverter } from "./force";
 
 export const converters = [
   lengthConverter,
@@ -22,4 +23,5 @@ export const converters = [
   pressureConverter,
   energyConverter,
   powerConverter,
+  forceConverter,
 ];
