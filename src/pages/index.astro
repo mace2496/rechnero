@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { converters } from "../data/converters";
+import { calculators } from "../data/calculators";
 
 const title =
   "Rechnero – Kostenlose Rechner & Umrechner";
@@ -9,6 +10,7 @@ const description =
   "Kostenlose Rechner und Umrechner für den Alltag – schnell, einfach und kostenlos online.";
 
 const featuredConverters = converters.slice(0, 6);
+const featuredCalculators = calculators.slice(0, 3);
 ---
 
 <Layout title={title} description={description}>
@@ -57,32 +59,91 @@ const featuredConverters = converters.slice(0, 6);
     </section>
 
     <section
-      class="home-section"
-      id="alle-umrechner"
-    >
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Übersicht</p>
+  class="home-section" id="alle-rechner">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Rechner</p>
 
-          <h2>Alle Umrechner</h2>
-        </div>
-      </div>
+      <h2>Praktische Rechner</h2>
+    </div>
 
-      <div class="tool-list">
-        {
-          converters.map((converter) => (
-            <a
-              href={`/umrechner/${converter.slug}/`}
-              class="tool-card"
-            >
-              <h3>{converter.name}</h3>
+    <a href="#alle-rechner">
+      Alle Rechner
+    </a>
+  </div>
 
-              <p>{converter.description}</p>
-            </a>
-          ))
-        }
-      </div>
-    </section>
+  <div class="tool-list">
+    {
+      featuredCalculators.map((calculator) => (
+        <a
+          href={`/rechner/${calculator.slug}/`}
+          class="tool-card"
+        >
+          <h3>{calculator.name}</h3>
+
+          <p>{calculator.description}</p>
+        </a>
+      ))
+    }
+  </div>
+
+</section>
+
+    <section
+  class="home-section"
+  id="alle-rechner"
+>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Übersicht</p>
+
+      <h2>Alle Rechner</h2>
+    </div>
+  </div>
+
+  <div class="tool-list">
+    {
+      calculators.map((calculator) => (
+        <a
+          href={`/rechner/${calculator.slug}/`}
+          class="tool-card"
+        >
+          <h3>{calculator.name}</h3>
+
+          <p>{calculator.description}</p>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<section
+  class="home-section"
+  id="alle-umrechner"
+>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Übersicht</p>
+
+      <h2>Alle Umrechner</h2>
+    </div>
+  </div>
+
+  <div class="tool-list">
+    {
+      converters.map((converter) => (
+        <a
+          href={`/umrechner/${converter.slug}/`}
+          class="tool-card"
+        >
+          <h3>{converter.name}</h3>
+
+          <p>{converter.description}</p>
+        </a>
+      ))
+    }
+  </div>
+</section>
 
     <section class="home-section home-info">
       <p class="eyebrow">Warum Rechnero?</p>

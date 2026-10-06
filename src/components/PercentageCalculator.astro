@@ -1,0 +1,98 @@
+<div class="calculator" data-percentage-calculator>
+  <div class="calculator-section">
+    <h3>Wie viel sind X % von Y?</h3>
+
+    <div class="calculator-grid">
+      <div class="field">
+        <label for="percentage">Prozent</label>
+
+        <input
+          id="percentage"
+          data-percentage
+          type="number"
+          value="10"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="base">Grundwert</label>
+
+        <input
+          id="base"
+          data-base
+          type="number"
+          value="100"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+    </div>
+
+    <div class="calculator-result" data-result>
+      10
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector(
+    "[data-percentage-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const percentageInput =
+      root.querySelector("[data-percentage]");
+
+    const baseInput =
+      root.querySelector("[data-base]");
+
+    const result =
+      root.querySelector("[data-result]");
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("de-DE", {
+        maximumFractionDigits: 12,
+      }).format(value);
+    }
+
+    function calculate() {
+      const percentage = Number(
+        percentageInput.value
+      );
+
+      const base = Number(
+        baseInput.value
+      );
+
+      if (
+        !Number.isFinite(percentage) ||
+        !Number.isFinite(base)
+      ) {
+        result.textContent =
+          "Bitte gültige Werte eingeben.";
+
+        return;
+      }
+
+      const calculated =
+        (percentage / 100) * base;
+
+      result.textContent =
+        formatNumber(calculated);
+    }
+
+    percentageInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    baseInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    calculate();
+  }
+</script>

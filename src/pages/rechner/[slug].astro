@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PercentageCalculator from "../../components/PercentageCalculator.astro";
+import { calculators } from "../../data/calculators";
+
+export function getStaticPaths() {
+  return calculators.map((calculator) => ({
+    params: {
+      slug: calculator.slug,
+    },
+    props: {
+      calculator,
+    },
+  }));
+}
+
+const { calculator } = Astro.props;
+
+const title = `${calculator.name} | Rechnero`;
+
+const description =
+  calculator.seoDescription;
+---
+
+<Layout title={title} description={description}>
+  <div class="container">
+    <section class="hero">
+      <p>Rechnero · Rechner</p>
+
+      <h1>{calculator.name}</h1>
+
+      <p>
+        {calculator.description}
+      </p>
+    </section>
+
+    <section>
+      <PercentageCalculator />
+    </section>
+
+    <section class="content">
+      <h2>{calculator.name}</h2>
+
+      <p>
+        {calculator.intro}
+      </p>
+    </section>
+  </div>
+</Layout>
