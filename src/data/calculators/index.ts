@@ -1,4 +1,5 @@
 import { percentageCalculator } from "./percentage";
+import { vatCalculator } from "./vat";
 
 export interface CalculatorConfig {
   id: string;
@@ -11,4 +12,5 @@ export interface CalculatorConfig {
 
 export const calculators: CalculatorConfig[] = [
   percentageCalculator,
+  vatCalculator,
 ];

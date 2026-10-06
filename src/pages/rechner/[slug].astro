@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PercentageCalculator from "../../components/PercentageCalculator.astro";
+import VatCalculator from "../../components/VatCalculator.astro";
 import { calculators } from "../../data/calculators";
 
 export function getStaticPaths() {
@@ -35,7 +36,13 @@ const description =
     </section>
 
     <section>
-      <PercentageCalculator />
+      {
+  calculator.id === "percentage" ? (
+    <PercentageCalculator />
+  ) : calculator.id === "vat" ? (
+    <VatCalculator />
+  ) : null
+}
     </section>
 
     <section class="content">

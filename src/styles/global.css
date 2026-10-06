@@ -514,3 +514,46 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+.vat-results {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-top: 24px;
+}
+
+.vat-result {
+  padding: 20px;
+
+  border: 1px solid #d8dde3;
+  border-radius: 12px;
+
+  background: #f3f5f7;
+}
+
+.vat-result span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #6b7280;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.vat-result strong {
+  display: block;
+
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .vat-results {
+    grid-template-columns: 1fr;
+  }
+}

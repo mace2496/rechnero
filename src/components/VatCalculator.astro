@@ -1,0 +1,181 @@
+<div class="calculator" data-vat-calculator>
+  <div class="calculator-section">
+    <h3>Mehrwertsteuer berechnen</h3>
+
+<div class="field">
+  <label for="vat-mode">
+    Berechnung
+  </label>
+
+  <select id="vat-mode" data-mode>
+    <option value="net">Netto → Brutto</option>
+    <option value="gross">Brutto → Netto</option>
+  </select>
+</div>
+
+<div class="calculator-grid">
+      <div class="field">
+        <label for="vat-net" data-amount-label>
+          Nettopreis
+        </label>
+
+        <input
+          id="vat-net"
+          data-net
+          type="number"
+          value="100"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="vat-rate">
+          Mehrwertsteuersatz (%)
+        </label>
+
+        <input
+          id="vat-rate"
+          data-rate
+          type="number"
+          value="19"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+    </div>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Mehrwertsteuer</span>
+
+        <strong data-vat>
+          19,00 €
+        </strong>
+      </div>
+
+      <div class="vat-result">
+        <span data-price-label>Bruttopreis</span>
+
+        <strong data-gross>
+          119,00 €
+        </strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector(
+    "[data-vat-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const netInput =
+      root.querySelector("[data-net]");
+
+    const rateInput =
+      root.querySelector("[data-rate]");
+
+    const modeSelect =
+      root.querySelector("[data-mode]");
+
+    const priceLabel =
+      root.querySelector("[data-price-label]");
+
+    const amountLabel =
+      root.querySelector("[data-amount-label]");
+
+    const vatResult =
+      root.querySelector("[data-vat]");
+
+    const grossResult =
+      root.querySelector("[data-gross]");
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      }).format(value);
+    }
+
+    function calculate() {
+    const amount = Number(netInput.value);
+    const rate = Number(rateInput.value);
+    const mode = modeSelect.value;
+    priceLabel.textContent =
+    mode === "gross"
+    ? "Nettopreis"
+    : "Bruttopreis";
+
+    amountLabel.textContent =
+    mode === "gross"
+    ? "Bruttopreis"
+    : "Nettopreis";
+
+  if (
+    !Number.isFinite(amount) ||
+    !Number.isFinite(rate) ||
+    amount < 0 ||
+    rate < 0
+  ) {
+    vatResult.textContent =
+      "Ungültiger Wert";
+
+    grossResult.textContent =
+      "Ungültiger Wert";
+
+    return;
+  }
+
+  if (mode === "gross") {
+    const net =
+      amount / (1 + rate / 100);
+
+    const vat =
+      amount - net;
+
+    vatResult.textContent =
+      formatCurrency(vat);
+
+    grossResult.textContent =
+      formatCurrency(net);
+
+    return;
+  }
+
+  const net = amount;
+
+  const vat =
+    net * (rate / 100);
+
+  const gross =
+    net + vat;
+
+  vatResult.textContent =
+    formatCurrency(vat);
+
+  grossResult.textContent =
+    formatCurrency(gross);
+}
+
+    netInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    rateInput.addEventListener(
+  "input",
+  calculate
+);
+
+modeSelect.addEventListener(
+  "change",
+  calculate
+);
+
+calculate();
+  }
+</script>
