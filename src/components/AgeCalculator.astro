@@ -1,0 +1,192 @@
+<div class="calculator" data-age-calculator>
+  <div class="calculator-section">
+    <h3>Alter berechnen</h3>
+
+    <div class="calculator-grid">
+      <div class="field">
+        <label for="birth-date">
+          Geburtsdatum
+        </label>
+
+        <input
+          id="birth-date"
+          data-birth-date
+          type="date"
+        />
+      </div>
+
+      <div class="field">
+        <label for="reference-date">
+          Berechnen bis
+        </label>
+
+        <input
+          id="reference-date"
+          data-reference-date
+          type="date"
+        />
+      </div>
+    </div>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Alter</span>
+        <strong data-age>–</strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Gesamte Tage</span>
+        <strong data-days>–</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="calculator-help">
+  Der Rechner ermittelt das Alter in Jahren, Monaten und Tagen
+  zwischen dem Geburtsdatum und dem gewählten Stichtag.
+</p>
+
+<script>
+  const root = document.querySelector(
+    "[data-age-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const birthInput =
+      root.querySelector("[data-birth-date]");
+
+    const referenceInput =
+      root.querySelector("[data-reference-date]");
+
+    const ageResult =
+      root.querySelector("[data-age]");
+
+    const daysResult =
+      root.querySelector("[data-days]");
+
+    function parseDate(value) {
+      const parts = value.split("-").map(Number);
+
+      if (parts.length !== 3) {
+        return null;
+      }
+
+      const [year, month, day] = parts;
+
+      if (
+        !Number.isInteger(year) ||
+        !Number.isInteger(month) ||
+        !Number.isInteger(day)
+      ) {
+        return null;
+      }
+
+      return new Date(
+        Date.UTC(year, month - 1, day)
+      );
+    }
+
+    function calculate() {
+      const birthDate =
+        parseDate(birthInput.value);
+
+      const referenceDate =
+        parseDate(referenceInput.value);
+
+      if (!birthDate || !referenceDate) {
+        ageResult.textContent = "–";
+        daysResult.textContent = "–";
+        return;
+      }
+
+      if (referenceDate < birthDate) {
+        ageResult.textContent =
+          "Ungültiger Zeitraum";
+
+        daysResult.textContent = "–";
+        return;
+      }
+
+      let years =
+        referenceDate.getUTCFullYear() -
+        birthDate.getUTCFullYear();
+
+      let months =
+        referenceDate.getUTCMonth() -
+        birthDate.getUTCMonth();
+
+      let days =
+        referenceDate.getUTCDate() -
+        birthDate.getUTCDate();
+
+      if (days < 0) {
+        months--;
+
+        const previousMonth =
+          new Date(
+            Date.UTC(
+              referenceDate.getUTCFullYear(),
+              referenceDate.getUTCMonth(),
+              0
+            )
+          );
+
+        days +=
+          previousMonth.getUTCDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      const millisecondsPerDay =
+        24 * 60 * 60 * 1000;
+
+      const totalDays =
+        Math.floor(
+          (referenceDate.getTime() -
+            birthDate.getTime()) /
+            millisecondsPerDay
+        );
+
+      ageResult.textContent =
+        `${years} Jahre, ${months} Monate, ${days} Tage`;
+
+      daysResult.textContent =
+        new Intl.NumberFormat("de-DE").format(
+          totalDays
+        );
+    }
+
+    const today =
+      new Date();
+
+    const todayString =
+      [
+        today.getFullYear(),
+        String(
+          today.getMonth() + 1
+        ).padStart(2, "0"),
+        String(
+          today.getDate()
+        ).padStart(2, "0"),
+      ].join("-");
+
+    referenceInput.value =
+      todayString;
+
+    birthInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    referenceInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    calculate();
+  }
+</script>
