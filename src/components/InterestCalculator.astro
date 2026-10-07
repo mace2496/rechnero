@@ -1,0 +1,169 @@
+<div class="calculator" data-interest-calculator>
+  <div class="calculator-section">
+    <h3>Zinsen berechnen</h3>
+
+<p class="calculator-note">
+  Berechnung mit einfachen Zinsen ohne Zinseszins.
+</p>
+
+    <div class="calculator-grid">
+      <div class="field">
+        <label for="interest-capital">
+          Anfangskapital (€)
+        </label>
+
+        <input
+          id="interest-capital"
+          data-capital
+          type="number"
+          value="1000"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="interest-rate">
+          Zinssatz (%)
+        </label>
+
+        <input
+          id="interest-rate"
+          data-rate
+          type="number"
+          value="5"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="interest-years">
+          Laufzeit (Jahre)
+        </label>
+
+        <input
+          id="interest-years"
+          data-years
+          type="number"
+          value="1"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+    </div>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Zinsen</span>
+
+        <strong data-interest>
+          50,00 €
+        </strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Endkapital</span>
+
+        <strong data-total>
+          1.050,00 €
+        </strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="calculator-help">
+  Die Zinsen werden auf Basis des ursprünglichen
+  Anfangskapitals berechnet.
+</p>
+
+<script>
+  const root = document.querySelector(
+    "[data-interest-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const capitalInput =
+      root.querySelector("[data-capital]");
+
+    const rateInput =
+      root.querySelector("[data-rate]");
+
+    const yearsInput =
+      root.querySelector("[data-years]");
+
+    const interestResult =
+      root.querySelector("[data-interest]");
+
+    const totalResult =
+      root.querySelector("[data-total]");
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      }).format(value);
+    }
+
+    function calculate() {
+      const capital =
+        Number(capitalInput.value);
+
+      const rate =
+        Number(rateInput.value);
+
+      const years =
+        Number(yearsInput.value);
+
+      if (
+        !Number.isFinite(capital) ||
+        !Number.isFinite(rate) ||
+        !Number.isFinite(years) ||
+        capital < 0 ||
+        rate < 0 ||
+        years < 0
+      ) {
+        interestResult.textContent =
+          "Ungültiger Wert";
+
+        totalResult.textContent =
+          "Ungültiger Wert";
+
+        return;
+      }
+
+      const interest =
+        capital * (rate / 100) * years;
+
+      const total =
+        capital + interest;
+
+      interestResult.textContent =
+        formatCurrency(interest);
+
+      totalResult.textContent =
+        formatCurrency(total);
+    }
+
+    capitalInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    rateInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    yearsInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    calculate();
+  }
+</script>

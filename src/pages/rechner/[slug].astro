@@ -4,6 +4,7 @@ import PercentageCalculator from "../../components/PercentageCalculator.astro";
 import VatCalculator from "../../components/VatCalculator.astro";
 import { calculators } from "../../data/calculators";
 import RuleOfThreeCalculator from "../../components/RuleOfThreeCalculator.astro";
+import InterestCalculator from "../../components/InterestCalculator.astro";
 
 export function getStaticPaths() {
   return calculators.map((calculator) => ({
@@ -44,6 +45,8 @@ const description =
     <VatCalculator />
   ) : calculator.id === "rule-of-three" ? (
     <RuleOfThreeCalculator />
+  ) : calculator.id === "interest" ? (
+    <InterestCalculator />
   ) : null
 }
     </section>
