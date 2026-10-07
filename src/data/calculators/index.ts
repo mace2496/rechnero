@@ -2,6 +2,7 @@ import { percentageCalculator } from "./percentage";
 import { vatCalculator } from "./vat";
 import { ruleOfThreeCalculator } from "./dreisatz";
 import { interestCalculator } from "./zins";
+import { discountCalculator } from "./rabatt";
 
 export interface CalculatorConfig {
   id: string;
@@ -17,4 +18,5 @@ export const calculators: CalculatorConfig[] = [
   vatCalculator,
   ruleOfThreeCalculator,
   interestCalculator,
+  discountCalculator,
 ];

@@ -1,0 +1,133 @@
+<div class="calculator" data-discount-calculator>
+  <div class="calculator-section">
+    <h3>Rabatt berechnen</h3>
+
+    <div class="calculator-grid">
+      <div class="field">
+        <label for="discount-price">
+          Ursprünglicher Preis (€)
+        </label>
+
+        <input
+          id="discount-price"
+          data-price
+          type="number"
+          value="100"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="discount-rate">
+          Rabatt (%)
+        </label>
+
+        <input
+          id="discount-rate"
+          data-rate
+          type="number"
+          value="20"
+          min="0"
+          max="100"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+    </div>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Rabattbetrag</span>
+
+        <strong data-discount>
+          20,00 €
+        </strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Preis nach Rabatt</span>
+
+        <strong data-final-price>
+          80,00 €
+        </strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector(
+    "[data-discount-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const priceInput =
+      root.querySelector("[data-price]");
+
+    const rateInput =
+      root.querySelector("[data-rate]");
+
+    const discountResult =
+      root.querySelector("[data-discount]");
+
+    const finalPriceResult =
+      root.querySelector("[data-final-price]");
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      }).format(value);
+    }
+
+    function calculate() {
+      const price =
+        Number(priceInput.value);
+
+      const rate =
+        Number(rateInput.value);
+
+      if (
+        !Number.isFinite(price) ||
+        !Number.isFinite(rate) ||
+        price < 0 ||
+        rate < 0 ||
+        rate > 100
+      ) {
+        discountResult.textContent =
+          "Ungültiger Wert";
+
+        finalPriceResult.textContent =
+          "Ungültiger Wert";
+
+        return;
+      }
+
+      const discount =
+        price * (rate / 100);
+
+      const finalPrice =
+        price - discount;
+
+      discountResult.textContent =
+        formatCurrency(discount);
+
+      finalPriceResult.textContent =
+        formatCurrency(finalPrice);
+    }
+
+    priceInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    rateInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    calculate();
+  }
+</script>
