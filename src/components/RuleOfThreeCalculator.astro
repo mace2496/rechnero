@@ -1,0 +1,140 @@
+<div class="calculator" data-rule-of-three-calculator>
+  <div class="calculator-section">
+    <h3>Dreisatz berechnen</h3>
+
+    <div class="rule-of-three-grid">
+      <div class="field">
+        <label for="rule-a">Bekannter Wert</label>
+
+        <input
+          id="rule-a"
+          data-a
+          type="number"
+          value="10"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="rule-arrow">
+        →
+      </div>
+
+      <div class="field">
+        <label for="rule-b">Zugehöriger Wert</label>
+
+        <input
+          id="rule-b"
+          data-b
+          type="number"
+          value="20"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="rule-c">Neuer Wert</label>
+
+        <input
+          id="rule-c"
+          data-c
+          type="number"
+          value="15"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="rule-arrow">
+        →
+      </div>
+
+      <div class="rule-result-preview">
+        <span>Ergebnis</span>
+
+        <strong data-preview>
+          30
+        </strong>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<p class="calculator-help">
+  Beispiel für einen proportionalen Dreisatz:
+  Wenn 10 Stück 20 € kosten, kosten 15 Stück 30 €.
+</p>
+
+<script>
+  const root = document.querySelector(
+    "[data-rule-of-three-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const aInput =
+      root.querySelector("[data-a]");
+
+    const bInput =
+      root.querySelector("[data-b]");
+
+    const cInput =
+      root.querySelector("[data-c]");
+
+    const preview =
+      root.querySelector("[data-preview]");
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("de-DE", {
+        maximumFractionDigits: 12,
+      }).format(value);
+    }
+
+    function calculate() {
+      const a = Number(aInput.value);
+      const b = Number(bInput.value);
+      const c = Number(cInput.value);
+
+      if (
+        !Number.isFinite(a) ||
+        !Number.isFinite(b) ||
+        !Number.isFinite(c) ||
+        a === 0
+      ) {
+        preview.textContent =
+        "–";
+
+        preview.textContent =
+          "–";
+
+        return;
+      }
+
+      const calculated =
+        (b * c) / a;
+
+      const formatted =
+        formatNumber(calculated);
+
+      preview.textContent =
+      formatted;
+    }
+
+    aInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    bInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    cInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    calculate();
+  }
+</script>
