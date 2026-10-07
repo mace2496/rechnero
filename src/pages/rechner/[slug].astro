@@ -6,6 +6,8 @@ import { calculators } from "../../data/calculators";
 import RuleOfThreeCalculator from "../../components/RuleOfThreeCalculator.astro";
 import InterestCalculator from "../../components/InterestCalculator.astro";
 import DiscountCalculator from "../../components/DiscountCalculator.astro";
+import AverageCalculator from "../../components/AverageCalculator.astro";
+import FractionCalculator from "../../components/FractionCalculator.astro";
 
 export function getStaticPaths() {
   return calculators.map((calculator) => ({
@@ -50,7 +52,11 @@ const description =
     <InterestCalculator />
   ) : calculator.id === "discount" ? (
     <DiscountCalculator />
-  ) : null
+  ) : calculator.id === "average" ? (
+    <AverageCalculator />
+  ) : calculator.id === "fraction" ? (
+    <FractionCalculator />
+) : null
   
 }
     </section>

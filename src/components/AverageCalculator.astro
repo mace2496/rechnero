@@ -1,0 +1,182 @@
+<div class="calculator" data-average-calculator>
+  <div class="calculator-section">
+    <h3>Durchschnitt berechnen</h3>
+
+    <div class="calculator-grid" data-inputs>
+      <div class="field">
+        <label for="average-1">Wert 1</label>
+        <input
+          id="average-1"
+          data-value
+          type="number"
+          value="10"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="average-2">Wert 2</label>
+        <input
+          id="average-2"
+          data-value
+          type="number"
+          value="20"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="average-3">Wert 3</label>
+        <input
+          id="average-3"
+          data-value
+          type="number"
+          value="30"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="calculator-button"
+      data-add-value
+    >
+      Weitere Zahl
+    </button>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Summe</span>
+        <strong data-sum>60</strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Durchschnitt</span>
+        <strong data-average>20</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="calculator-help">
+  Der Durchschnitt wird als arithmetisches Mittel aller eingegebenen Werte berechnet.
+</p>
+
+<script>
+  const root = document.querySelector(
+    "[data-average-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const inputsContainer =
+      root.querySelector("[data-inputs]");
+
+    const addButton =
+      root.querySelector("[data-add-value]");
+
+    const sumResult =
+      root.querySelector("[data-sum]");
+
+    const averageResult =
+      root.querySelector("[data-average]");
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("de-DE", {
+        maximumFractionDigits: 12,
+      }).format(value);
+    }
+
+    function getInputs() {
+      return Array.from(
+        root.querySelectorAll("[data-value]")
+      ).filter(
+        (input) => input instanceof HTMLInputElement
+      );
+    }
+
+    function calculate() {
+      const values = getInputs()
+        .filter((input) => input.value.trim() !== "")
+        .map((input) => Number(input.value))
+        .filter((value) => Number.isFinite(value));
+
+      if (values.length === 0) {
+        sumResult.textContent = "–";
+        averageResult.textContent = "–";
+        return;
+      }
+
+      const sum = values.reduce(
+        (total, value) => total + value,
+        0
+      );
+
+      const average =
+        sum / values.length;
+
+      sumResult.textContent =
+        formatNumber(sum);
+
+      averageResult.textContent =
+        formatNumber(average);
+    }
+
+    function addInput() {
+      const count =
+        getInputs().length + 1;
+
+      const field =
+        document.createElement("div");
+
+      field.className = "field";
+
+      field.innerHTML = `
+        <label for="average-${count}">
+          Wert ${count}
+        </label>
+
+        <input
+          id="average-${count}"
+          data-value
+          type="number"
+          step="any"
+          inputmode="decimal"
+        />
+      `;
+
+      inputsContainer.appendChild(field);
+
+      const input =
+        field.querySelector("[data-value]");
+
+      if (input instanceof HTMLInputElement) {
+        input.addEventListener(
+          "input",
+          calculate
+        );
+
+        input.focus();
+      }
+
+      calculate();
+    }
+
+    getInputs().forEach((input) => {
+      input.addEventListener(
+        "input",
+        calculate
+      );
+    });
+
+    addButton.addEventListener(
+      "click",
+      addInput
+    );
+
+    calculate();
+  }
+</script>

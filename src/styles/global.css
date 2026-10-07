@@ -599,3 +599,43 @@ select:focus {
     display: none;
   }
 }
+
+.fraction-operation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.fraction {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fraction-line {
+  height: 2px;
+  background: #1f2937;
+}
+
+.fraction-operation > select {
+  min-width: 64px;
+  padding: 12px;
+  border: 1px solid #d8dde3;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .fraction-operation {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .fraction-operation > select {
+    justify-self: center;
+  }
+}

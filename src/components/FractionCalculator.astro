@@ -1,0 +1,227 @@
+<div class="calculator" data-fraction-calculator>
+  <div class="calculator-section">
+    <h3>Brüche berechnen</h3>
+
+    <div class="fraction-operation">
+      <div class="fraction">
+        <div class="field">
+          <label for="fraction-a-numerator">
+            Zähler
+          </label>
+
+          <input
+            id="fraction-a-numerator"
+            data-a-numerator
+            type="number"
+            value="1"
+            step="1"
+            inputmode="numeric"
+          />
+        </div>
+
+        <div class="fraction-line"></div>
+
+        <div class="field">
+          <label for="fraction-a-denominator">
+            Nenner
+          </label>
+
+          <input
+            id="fraction-a-denominator"
+            data-a-denominator
+            type="number"
+            value="2"
+            step="1"
+            inputmode="numeric"
+          />
+        </div>
+      </div>
+
+      <select data-operation aria-label="Rechenoperation">
+        <option value="add">+</option>
+        <option value="subtract">−</option>
+        <option value="multiply">×</option>
+        <option value="divide">÷</option>
+      </select>
+
+      <div class="fraction">
+        <div class="field">
+          <label for="fraction-b-numerator">
+            Zähler
+          </label>
+
+          <input
+            id="fraction-b-numerator"
+            data-b-numerator
+            type="number"
+            value="1"
+            step="1"
+            inputmode="numeric"
+          />
+        </div>
+
+        <div class="fraction-line"></div>
+
+        <div class="field">
+          <label for="fraction-b-denominator">
+            Nenner
+          </label>
+
+          <input
+            id="fraction-b-denominator"
+            data-b-denominator
+            type="number"
+            value="4"
+            step="1"
+            inputmode="numeric"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Ergebnis</span>
+        <strong data-result>3/4</strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Dezimalwert</span>
+        <strong data-decimal>0,75</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector(
+    "[data-fraction-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const aNumerator =
+      root.querySelector("[data-a-numerator]");
+
+    const aDenominator =
+      root.querySelector("[data-a-denominator]");
+
+    const bNumerator =
+      root.querySelector("[data-b-numerator]");
+
+    const bDenominator =
+      root.querySelector("[data-b-denominator]");
+
+    const operation =
+      root.querySelector("[data-operation]");
+
+    const result =
+      root.querySelector("[data-result]");
+
+    const decimalResult =
+      root.querySelector("[data-decimal]");
+
+    function gcd(a, b) {
+      a = Math.abs(a);
+      b = Math.abs(b);
+
+      while (b !== 0) {
+        const remainder = a % b;
+        a = b;
+        b = remainder;
+      }
+
+      return a;
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("de-DE", {
+        maximumFractionDigits: 12,
+      }).format(value);
+    }
+
+    function calculate() {
+      const an = Number(aNumerator.value);
+      const ad = Number(aDenominator.value);
+      const bn = Number(bNumerator.value);
+      const bd = Number(bDenominator.value);
+
+      if (
+        !Number.isInteger(an) ||
+        !Number.isInteger(ad) ||
+        !Number.isInteger(bn) ||
+        !Number.isInteger(bd) ||
+        ad === 0 ||
+        bd === 0
+      ) {
+        result.textContent = "Ungültiger Bruch";
+        decimalResult.textContent = "–";
+        return;
+      }
+
+      let numerator;
+      let denominator;
+
+      if (operation.value === "add") {
+        numerator = an * bd + bn * ad;
+        denominator = ad * bd;
+      } else if (operation.value === "subtract") {
+        numerator = an * bd - bn * ad;
+        denominator = ad * bd;
+      } else if (operation.value === "multiply") {
+        numerator = an * bn;
+        denominator = ad * bd;
+      } else {
+        if (bn === 0) {
+          result.textContent =
+            "Division durch 0 nicht möglich";
+          decimalResult.textContent = "–";
+          return;
+        }
+
+        numerator = an * bd;
+        denominator = ad * bn;
+      }
+
+      if (denominator < 0) {
+        numerator *= -1;
+        denominator *= -1;
+      }
+
+      const divisor =
+        gcd(numerator, denominator);
+
+      numerator /= divisor;
+      denominator /= divisor;
+
+      const decimal =
+        numerator / denominator;
+
+      result.textContent =
+        denominator === 1
+          ? String(numerator)
+          : `${numerator}/${denominator}`;
+
+      decimalResult.textContent =
+        formatNumber(decimal);
+    }
+
+    [
+      aNumerator,
+      aDenominator,
+      bNumerator,
+      bDenominator,
+    ].forEach((input) => {
+      input.addEventListener(
+        "input",
+        calculate
+      );
+    });
+
+    operation.addEventListener(
+      "change",
+      calculate
+    );
+
+    calculate();
+  }
+</script>

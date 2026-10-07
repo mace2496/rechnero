@@ -3,6 +3,8 @@ import { vatCalculator } from "./vat";
 import { ruleOfThreeCalculator } from "./dreisatz";
 import { interestCalculator } from "./zins";
 import { discountCalculator } from "./rabatt";
+import { averageCalculator } from "./durchschnitt";
+import { fractionCalculator } from "./bruch";
 
 export interface CalculatorConfig {
   id: string;
@@ -19,4 +21,6 @@ export const calculators: CalculatorConfig[] = [
   ruleOfThreeCalculator,
   interestCalculator,
   discountCalculator,
+  averageCalculator,
+  fractionCalculator,
 ];
