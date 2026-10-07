@@ -6,6 +6,7 @@ import { discountCalculator } from "./rabatt";
 import { averageCalculator } from "./durchschnitt";
 import { fractionCalculator } from "./bruch";
 import { ageCalculator } from "./alter";
+import { dateCalculator } from "./datum";
 
 export interface CalculatorConfig {
   id: string;
@@ -25,4 +26,5 @@ export const calculators: CalculatorConfig[] = [
   averageCalculator,
   fractionCalculator,
   ageCalculator,
+  dateCalculator,
 ];

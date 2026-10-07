@@ -9,6 +9,7 @@ import DiscountCalculator from "../../components/DiscountCalculator.astro";
 import AverageCalculator from "../../components/AverageCalculator.astro";
 import FractionCalculator from "../../components/FractionCalculator.astro";
 import AgeCalculator from "../../components/AgeCalculator.astro";
+import DateCalculator from "../../components/DateCalculator.astro";
 
 export function getStaticPaths() {
   return calculators.map((calculator) => ({
@@ -59,6 +60,8 @@ const description =
     <FractionCalculator />
   ) : calculator.id === "age" ? (
     <AgeCalculator />
+  ) : calculator.id === "date" ? (
+    <DateCalculator />
 ) : null
   
 }
