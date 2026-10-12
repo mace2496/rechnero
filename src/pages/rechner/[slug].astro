@@ -10,6 +10,7 @@ import AverageCalculator from "../../components/AverageCalculator.astro";
 import FractionCalculator from "../../components/FractionCalculator.astro";
 import AgeCalculator from "../../components/AgeCalculator.astro";
 import DateCalculator from "../../components/DateCalculator.astro";
+import CompoundInterestCalculator from "../../components/CompoundInterestCalculator.astro";
 
 export function getStaticPaths() {
   return calculators.map((calculator) => ({
@@ -62,6 +63,8 @@ const description =
     <AgeCalculator />
   ) : calculator.id === "date" ? (
     <DateCalculator />
+  ) : calculator.id === "compound-interest" ? (
+  <CompoundInterestCalculator />
 ) : null
   
 }

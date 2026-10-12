@@ -1,0 +1,216 @@
+<div class="calculator" data-compound-interest-calculator>
+  <div class="calculator-section">
+    <h3>Zinseszins berechnen</h3>
+
+    <p class="calculator-note">
+      Die Berechnung erfolgt mit jährlicher Verzinsung und optionalen
+      jährlichen Einzahlungen am Ende jedes Jahres.
+    </p>
+
+    <div class="calculator-grid">
+      <div class="field">
+        <label for="compound-capital">Anfangskapital (€)</label>
+        <input
+          id="compound-capital"
+          data-capital
+          type="number"
+          value="1000"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="compound-rate">Zinssatz (% p.a.)</label>
+        <input
+          id="compound-rate"
+          data-rate
+          type="number"
+          value="5"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+
+      <div class="field">
+        <label for="compound-years">Laufzeit (Jahre)</label>
+        <input
+          id="compound-years"
+          data-years
+          type="number"
+          value="10"
+          min="0"
+          step="1"
+          inputmode="numeric"
+        />
+      </div>
+
+      <div class="field">
+        <label for="compound-contribution">
+          Jährliche Einzahlung (€)
+        </label>
+        <input
+          id="compound-contribution"
+          data-contribution
+          type="number"
+          value="0"
+          min="0"
+          step="any"
+          inputmode="decimal"
+        />
+      </div>
+    </div>
+
+    <div class="vat-results">
+      <div class="vat-result">
+        <span>Endkapital</span>
+        <strong data-total>1.628,89 €</strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Eingezahltes Kapital</span>
+        <strong data-invested>1.000,00 €</strong>
+      </div>
+
+      <div class="vat-result">
+        <span>Zinsen</span>
+        <strong data-interest>628,89 €</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="calculator-help">
+  Die jährlichen Einzahlungen werden jeweils am Ende eines Jahres
+  berücksichtigt.
+</p>
+
+<script>
+  const root = document.querySelector(
+    "[data-compound-interest-calculator]"
+  );
+
+  if (root instanceof HTMLElement) {
+    const capitalInput =
+      root.querySelector("[data-capital]");
+
+    const rateInput =
+      root.querySelector("[data-rate]");
+
+    const yearsInput =
+      root.querySelector("[data-years]");
+
+    const contributionInput =
+      root.querySelector("[data-contribution]");
+
+    const totalResult =
+      root.querySelector("[data-total]");
+
+    const investedResult =
+      root.querySelector("[data-invested]");
+
+    const interestResult =
+      root.querySelector("[data-interest]");
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      }).format(value);
+    }
+
+    function calculate() {
+      const capital = Number(
+        capitalInput.value
+      );
+
+      const rate = Number(
+        rateInput.value
+      );
+
+      const years = Number(
+        yearsInput.value
+      );
+
+      const contribution = Number(
+        contributionInput.value
+      );
+
+      if (
+        !Number.isFinite(capital) ||
+        !Number.isFinite(rate) ||
+        !Number.isFinite(years) ||
+        !Number.isFinite(contribution) ||
+        capital < 0 ||
+        rate < 0 ||
+        years < 0 ||
+        contribution < 0
+      ) {
+        totalResult.textContent = "Ungültiger Wert";
+        investedResult.textContent = "Ungültiger Wert";
+        interestResult.textContent = "Ungültiger Wert";
+        return;
+      }
+
+      let total;
+
+      if (rate === 0) {
+        total =
+          capital +
+          contribution * years;
+      } else {
+        const growth =
+          Math.pow(
+            1 + rate / 100,
+            years
+          );
+
+        total =
+          capital * growth +
+          contribution *
+            ((growth - 1) /
+              (rate / 100));
+      }
+
+      const invested =
+        capital +
+        contribution * years;
+
+      const interest =
+        total - invested;
+
+      totalResult.textContent =
+        formatCurrency(total);
+
+      investedResult.textContent =
+        formatCurrency(invested);
+
+      interestResult.textContent =
+        formatCurrency(interest);
+    }
+
+    capitalInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    rateInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    yearsInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    contributionInput.addEventListener(
+      "input",
+      calculate
+    );
+
+    calculate();
+  }
+</script>

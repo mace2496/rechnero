@@ -1,3 +1,4 @@
+import { compoundInterestCalculator } from "./zinseszins";
 import { percentageCalculator } from "./percentage";
 import { vatCalculator } from "./vat";
 import { ruleOfThreeCalculator } from "./dreisatz";
@@ -27,4 +28,5 @@ export const calculators: CalculatorConfig[] = [
   fractionCalculator,
   ageCalculator,
   dateCalculator,
+  compoundInterestCalculator,
 ];
