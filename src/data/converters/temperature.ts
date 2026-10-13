@@ -1,20 +1,19 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const temperatureConverter: ConverterConfig = {
   id: "temperature",
-
   slug: "temperatur",
-
   name: "Temperaturumrechner",
 
   description:
-    "Temperaturen schnell und kostenlos zwischen Celsius, Fahrenheit und Kelvin umrechnen.",
+    "Rechne Temperaturen kostenlos zwischen Celsius, Fahrenheit und Kelvin um.",
 
   intro:
-    "Mit unserem Temperaturumrechner kannst du Temperaturen schnell und einfach zwischen Celsius, Fahrenheit und Kelvin umrechnen.",
+    "Wie viel Grad Fahrenheit sind 20 °C oder welcher Kelvin-Wert entspricht einer bestimmten Temperatur? Mit dem Temperaturumrechner kannst du Celsius, Fahrenheit und Kelvin schnell und einfach ineinander umrechnen. Wähle die Ausgangs- und Zieleinheit, gib die Temperatur ein und erhalte direkt das Ergebnis. Der Rechner eignet sich beispielsweise für Wetterangaben, wissenschaftliche Anwendungen, den Unterricht und den Vergleich internationaler Temperaturwerte.",
 
   seoDescription:
-    "Temperaturumrechner für Celsius, Fahrenheit und Kelvin. Temperaturen schnell, kostenlos und einfach online umrechnen.",
+    "Temperaturumrechner für Celsius, Fahrenheit und Kelvin. Rechne Temperaturen schnell, kostenlos und einfach online um.",
 
   type: "temperature",
 

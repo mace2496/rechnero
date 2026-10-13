@@ -1,15 +1,20 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const energyConverter: ConverterConfig = {
   id: "energy",
   slug: "energie",
   name: "Energieumrechner",
+
   description:
-    "Energie schnell und kostenlos zwischen Joule, Kilojoule, Wattstunden, Kilowattstunden, Kalorien und Kilokalorien umrechnen.",
+    "Rechne Joule, Kilojoule, Wattstunden, Kilowattstunden, Kalorien und Kilokalorien schnell und kostenlos um.",
+
   intro:
-    "Mit unserem Energieumrechner kannst du Energie schnell und einfach zwischen verschiedenen Energieeinheiten umrechnen.",
+    "Wie viele Joule sind eine Kilowattstunde oder wie lassen sich Kilokalorien in Kilojoule umrechnen? Mit dem Energieumrechner kannst du verschiedene Energieeinheiten schnell und einfach ineinander umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Wert ein und erhalte direkt das Ergebnis. Der Rechner unterstützt Joule, Kilojoule, Wattstunden, Kilowattstunden, Kalorien und Kilokalorien. Er ist beispielsweise hilfreich beim Vergleichen von Stromverbrauch, beim Umrechnen technischer Energieangaben und beim Einordnen von Energieangaben auf Lebensmitteln.",
+
   seoDescription:
-    "Energieumrechner für Joule, Kilojoule, Wattstunden, Kilowattstunden, Kalorien und Kilokalorien. Schnell, kostenlos und einfach online umrechnen.",
+    "Energieumrechner für Joule, Kilojoule, Wattstunden, Kilowattstunden, Kalorien und Kilokalorien. Energieeinheiten kostenlos online umrechnen.",
+
   units: [
     { id: "j", name: "Joule", symbol: "J", factor: 1 },
     { id: "kj", name: "Kilojoule", symbol: "kJ", factor: 1000 },

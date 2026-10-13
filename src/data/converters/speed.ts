@@ -1,20 +1,19 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const speedConverter: ConverterConfig = {
   id: "speed",
-
   slug: "geschwindigkeit",
-
   name: "Geschwindigkeitsumrechner",
 
   description:
-    "Geschwindigkeiten schnell und kostenlos zwischen Meter pro Sekunde, Kilometer pro Stunde, Meilen pro Stunde, Knoten und Fuß pro Sekunde umrechnen.",
+    "Rechne Geschwindigkeiten zwischen m/s, km/h, mph, Knoten und ft/s schnell und kostenlos um.",
 
   intro:
-    "Mit unserem Geschwindigkeitsumrechner kannst du Geschwindigkeiten schnell und einfach zwischen metrischen und angloamerikanischen Maßeinheiten umrechnen.",
+    "Wie viel Kilometer pro Stunde sind 10 Meter pro Sekunde oder wie schnell sind 60 Meilen pro Stunde in km/h? Mit dem Geschwindigkeitsumrechner kannst du verschiedene Geschwindigkeitseinheiten schnell und einfach umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Wert ein und erhalte direkt das Ergebnis. Der Rechner unterstützt Meter pro Sekunde, Kilometer pro Stunde, Meilen pro Stunde, Knoten und Fuß pro Sekunde. Er eignet sich beispielsweise für den Straßenverkehr, den Sport, technische Berechnungen und die Schifffahrt.",
 
   seoDescription:
-    "Geschwindigkeitsumrechner für Meter pro Sekunde, Kilometer pro Stunde, Meilen pro Stunde, Knoten und Fuß pro Sekunde. Schnell, kostenlos und einfach online umrechnen.",
+    "Geschwindigkeitsumrechner für Meter pro Sekunde, Kilometer pro Stunde, Meilen pro Stunde, Knoten und Fuß pro Sekunde. Kostenlos online umrechnen.",
 
   units: [
     {

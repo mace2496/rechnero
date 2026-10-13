@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const interestCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const interestCalculator: CalculatorConfig = {
   slug: "zinsrechner",
   name: "Zinsrechner",
   description:
-    "Zinsen und Endkapital schnell und einfach berechnen.",
+    "Berechne Zinsen und Endkapital für eine Geldanlage schnell und kostenlos.",
   intro:
-    "Mit unserem Zinsrechner kannst du die Zinsen und das Endkapital einer Geldanlage schnell und einfach berechnen.",
+    "Mit dem Zinsrechner kannst du berechnen, wie viele Zinsen eine Geldanlage innerhalb eines bestimmten Zeitraums erwirtschaftet und welches Endkapital daraus entsteht. Gib das Anfangskapital, den Zinssatz und die Laufzeit ein, um das Ergebnis zu ermitteln. Der Rechner eignet sich für einfache Zinsberechnungen und hilft dir, mögliche Zinserträge besser einzuschätzen. Bei dieser Berechnung werden Zinsen nicht automatisch wieder angelegt; für Berechnungen mit Zinseszins gibt es unseren Zinseszinsrechner.",
   seoDescription:
-    "Zinsrechner zum Berechnen von Zinsen und Endkapital. Schnell, kostenlos und einfach online rechnen.",
+    "Zinsrechner zur Berechnung von Zinsen und Endkapital. Ermittle mögliche Zinserträge für Kapital, Zinssatz und Laufzeit kostenlos online.",
 };

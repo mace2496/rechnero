@@ -1,20 +1,19 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const weightConverter: ConverterConfig = {
   id: "weight",
-
   slug: "gewicht",
-
   name: "Gewichtsumrechner",
 
   description:
-    "Gewichte schnell und kostenlos zwischen Milligramm, Gramm, Kilogramm, Tonnen, Unzen und Pfund umrechnen.",
+    "Rechne Milligramm, Gramm, Kilogramm, Tonnen, Unzen und Pfund schnell und kostenlos ineinander um.",
 
   intro:
-    "Mit unserem Gewichtsumrechner kannst du Gewichte schnell und einfach zwischen metrischen und angloamerikanischen Maßeinheiten umrechnen.",
+    "Wie viele Gramm sind ein Kilogramm oder wie viel wiegt ein Gegenstand in Unzen? Mit dem Gewichtsumrechner kannst du verschiedene Masseinheiten einfach und kostenlos umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Wert ein und erhalte direkt das Ergebnis. Der Rechner unterstützt Milligramm, Gramm, Kilogramm, Tonnen sowie die angloamerikanischen Einheiten Unze und Pfund. Er hilft dir beispielsweise beim Kochen, beim Abwiegen von Zutaten, beim Vergleichen von Produktangaben und beim Umrechnen internationaler Gewichtsangaben.",
 
   seoDescription:
-    "Gewichtsumrechner für Milligramm, Gramm, Kilogramm, Tonnen, Unzen und Pfund. Schnell, kostenlos und einfach online umrechnen.",
+    "Gewichtsumrechner für Milligramm, Gramm, Kilogramm, Tonnen, Unzen und Pfund. Masseinheiten schnell und kostenlos online umrechnen.",
 
   units: [
     {

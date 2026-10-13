@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const dateCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const dateCalculator: CalculatorConfig = {
   slug: "datumsrechner",
   name: "Datumsrechner",
   description:
-    "Datumsdifferenzen schnell und einfach berechnen.",
+    "Berechne den Abstand zwischen zwei Daten in Tagen, Monaten und Jahren.",
   intro:
-    "Mit unserem Datumsrechner kannst du die Zeitspanne zwischen zwei Daten in Jahren, Monaten und Tagen sowie die Anzahl der Tage insgesamt berechnen.",
+    "Wie viele Tage liegen zwischen zwei Terminen? Mit dem Datumsrechner kannst du die Zeitspanne zwischen einem Startdatum und einem Enddatum ermitteln. Das Ergebnis zeigt dir die Differenz in Jahren, Monaten und Tagen sowie die Gesamtzahl der Tage. Der Rechner eignet sich beispielsweise zur Planung von Terminen, zur Berechnung von Fristen oder um herauszufinden, wie lange ein bestimmter Zeitraum dauert.",
   seoDescription:
-    "Datumsrechner zum Berechnen von Datumsdifferenzen. Ermittle Jahre, Monate, Tage und die Anzahl der Tage zwischen zwei Daten.",
+    "Datumsrechner zur Berechnung des Zeitraums zwischen zwei Daten. Ermittle Jahre, Monate und Tage sowie die Gesamtzahl der Tage kostenlos online.",
 };

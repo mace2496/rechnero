@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const averageCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const averageCalculator: CalculatorConfig = {
   slug: "durchschnittsrechner",
   name: "Durchschnittsrechner",
   description:
-    "Den Durchschnitt mehrerer Zahlen schnell und einfach berechnen.",
+    "Berechne den Durchschnitt mehrerer Zahlen schnell und kostenlos.",
   intro:
-    "Mit unserem Durchschnittsrechner kannst du den arithmetischen Mittelwert mehrerer Zahlen schnell und einfach berechnen.",
+    "Mit dem Durchschnittsrechner kannst du den arithmetischen Mittelwert mehrerer Zahlen berechnen. Gib deine Werte ein, um den Durchschnitt sofort zu ermitteln. Addiere dazu alle Zahlen und teile die Summe durch die Anzahl der Werte. Der Rechner eignet sich beispielsweise für Noten, Messwerte, Ausgaben oder andere Zahlenreihen, bei denen du einen einfachen Durchschnitt bestimmen möchtest.",
   seoDescription:
-    "Durchschnittsrechner zum Berechnen des arithmetischen Mittels mehrerer Zahlen. Schnell, kostenlos und einfach online rechnen.",
+    "Durchschnittsrechner zum Berechnen des arithmetischen Mittels. Ermittle den Durchschnitt mehrerer Zahlen kostenlos und einfach online.",
 };

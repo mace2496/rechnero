@@ -1,20 +1,19 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const areaConverter: ConverterConfig = {
   id: "area",
-
   slug: "flaeche",
-
   name: "Flächenumrechner",
 
   description:
-    "Flächen schnell und kostenlos zwischen Quadratmillimeter, Quadratzentimeter, Quadratmeter, Quadratkilometer, Hektar, Acre und Quadratfuß umrechnen.",
+    "Rechne Flächen zwischen Quadratmillimeter, Quadratzentimeter, Quadratmeter, Quadratkilometer, Hektar, Acre und Quadratfuß kostenlos um.",
 
   intro:
-    "Mit unserem Flächenumrechner kannst du Flächen schnell und einfach zwischen metrischen und angloamerikanischen Maßeinheiten umrechnen.",
+    "Wie viele Quadratmeter sind ein Hektar oder wie groß ist eine Fläche von 1.000 Quadratfuß in Quadratmetern? Mit dem Flächenumrechner kannst du unterschiedliche Flächeneinheiten schnell und einfach umrechnen. Wähle die Ausgangs- und Zieleinheit, gib den Flächenwert ein und erhalte direkt das Ergebnis. Der Rechner unterstützt Quadratmillimeter, Quadratzentimeter, Quadratmeter, Quadratkilometer, Hektar, Acre und Quadratfuß. Er ist beispielsweise bei der Planung von Grundstücken, bei Renovierungen, im Bauwesen und beim Vergleichen internationaler Flächenangaben hilfreich.",
 
   seoDescription:
-    "Flächenumrechner für Quadratmillimeter, Quadratzentimeter, Quadratmeter, Quadratkilometer, Hektar, Acre und Quadratfuß. Schnell, kostenlos und einfach online umrechnen.",
+    "Flächenumrechner für Quadratmillimeter, Quadratzentimeter, Quadratmeter, Quadratkilometer, Hektar, Acre und Quadratfuß. Flächen kostenlos online umrechnen.",
 
   units: [
     {

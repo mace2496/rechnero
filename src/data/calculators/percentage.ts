@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const percentageCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const percentageCalculator: CalculatorConfig = {
   slug: "prozentrechner",
   name: "Prozentrechner",
   description:
-    "Prozentwerte, Prozentsätze und Grundwerte schnell und kostenlos berechnen.",
+    "Berechne Prozentwerte, Prozentsätze und Grundwerte kostenlos und direkt online.",
   intro:
-    "Mit unserem Prozentrechner kannst du schnell und einfach Prozentsätze, Prozentwerte und Grundwerte berechnen.",
+    "Wie viel sind 20 Prozent von 150? Mit dem Prozentrechner kannst du Prozentwerte, Prozentsätze und Grundwerte einfach berechnen. Gib die bekannten Werte ein und erhalte schnell das passende Ergebnis. Der Rechner hilft dir beispielsweise bei Rabatten, Preisvergleichen, Prozentanteilen und alltäglichen Berechnungen.",
   seoDescription:
-    "Prozentrechner zum Berechnen von Prozentwerten, Prozentsätzen und Grundwerten. Schnell, kostenlos und einfach online rechnen.",
+    "Mit dem kostenlosen Prozentrechner berechnest du Prozentwerte, Prozentsätze und Grundwerte. Ideal für Rabatte, Preisvergleiche und schnelle Berechnungen im Alltag.",
 };

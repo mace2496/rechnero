@@ -1,20 +1,19 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const timeConverter: ConverterConfig = {
   id: "time",
-
   slug: "zeit",
-
   name: "Zeitumrechner",
 
   description:
-    "Zeit schnell und kostenlos zwischen Millisekunden, Sekunden, Minuten, Stunden, Tagen und Wochen umrechnen.",
+    "Rechne Millisekunden, Sekunden, Minuten, Stunden, Tage und Wochen schnell und kostenlos um.",
 
   intro:
-    "Mit unserem Zeitumrechner kannst du Zeit schnell und einfach zwischen verschiedenen Zeiteinheiten umrechnen.",
+    "Wie viele Minuten sind zwei Stunden oder wie viele Sekunden hat ein Tag? Mit dem Zeitumrechner kannst du verschiedene Zeiteinheiten schnell und einfach ineinander umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Wert ein und erhalte direkt das Ergebnis. Der Rechner unterstützt Millisekunden, Sekunden, Minuten, Stunden, Tage und Wochen. Er ist beispielsweise bei der Zeitplanung, beim Lernen, bei der Berechnung von Laufzeiten und beim Umrechnen von Zeitangaben in Alltag und Beruf hilfreich.",
 
   seoDescription:
-    "Zeitumrechner für Millisekunden, Sekunden, Minuten, Stunden, Tage und Wochen. Schnell, kostenlos und einfach online umrechnen.",
+    "Zeitumrechner für Millisekunden, Sekunden, Minuten, Stunden, Tage und Wochen. Zeiteinheiten kostenlos und schnell online umrechnen.",
 
   units: [
     {

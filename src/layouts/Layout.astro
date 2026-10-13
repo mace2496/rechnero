@@ -1,3 +1,4 @@
+
 ---
 import "../styles/global.css";
 
@@ -6,53 +7,37 @@ interface Props {
   description: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props as Props;
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site ?? "https://rechnero.de",
+);
 ---
 
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-
-    <meta
-      name="description"
-      content={description}
-    />
-
-    <meta
-      name="robots"
-      content="index, follow"
-    />
-
-    <link
-      rel="canonical"
-      href={Astro.url}
-    />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
   </head>
 
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <a href="/" class="logo">
-          Rechnero
+        <a href="/" class="logo" aria-label="Rechnero Startseite">
+          <span class="logo-symbol" aria-hidden="true">R</span>
+          <span>Rechnero</span>
         </a>
 
-        <nav class="main-nav">
-  <a href="/">
-    Startseite
-  </a>
-
-  <a href="/#alle-umrechner">
-    Umrechner
-  </a>
-</nav>
+        <nav class="main-nav" aria-label="Hauptnavigation">
+          <a href="/">Startseite</a>
+          <a href="/#alle-rechner">Rechner</a>
+          <a href="/#alle-umrechner">Umrechner</a>
+        </nav>
       </div>
     </header>
 
@@ -60,12 +45,18 @@ const { title, description } = Astro.props;
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>
-          © {new Date().getFullYear()} Rechnero
-        </p>
-      </div>
-    </footer>
+    
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="/" class="footer-logo">Rechnero</a>
+      <p>&copy; {new Date().getFullYear()} Rechnero</p>
+      <p>Praktische Rechner und Umrechner kostenlos online.</p>
+      <nav aria-label="Rechtliche Informationen">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
   </body>
 </html>

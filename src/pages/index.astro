@@ -1,13 +1,13 @@
+
 ---
 import Layout from "../layouts/Layout.astro";
 import { converters } from "../data/converters";
 import { calculators } from "../data/calculators";
 
-const title =
-  "Rechnero – Kostenlose Rechner & Umrechner";
+const title = "Rechnero – Kostenlose Rechner & Umrechner";
 
 const description =
-  "Kostenlose Rechner und Umrechner für den Alltag – schnell, einfach und kostenlos online.";
+  "Kostenlose Online-Rechner und Umrechner für Prozent, Zinsen, Alter und viele weitere Themen. Schnell, einfach und ohne Anmeldung.";
 
 const featuredConverters = converters.slice(0, 6);
 const featuredCalculators = calculators.slice(0, 3);
@@ -16,30 +16,54 @@ const featuredCalculators = calculators.slice(0, 3);
 <Layout title={title} description={description}>
   <div class="container">
     <section class="home-hero">
-      <p class="eyebrow">Rechnero</p>
+      <p class="eyebrow">Willkommen bei Rechnero</p>
 
       <h1>
-        Kostenlose Rechner<br />
-        & Umrechner
+        Rechnen und umrechnen.
+        <br />
+        Einfach und kostenlos.
       </h1>
 
       <p class="home-intro">
-        Praktische Online-Rechner und Umrechner für Alltag,
-        Technik und Beruf – schnell, kostenlos und einfach zu bedienen.
+        Entdecke praktische Online-Rechner und Umrechner für Alltag,
+        Beruf und Technik. Alle Werkzeuge sind kostenlos und direkt
+        im Browser nutzbar.
       </p>
     </section>
 
-    <section class="home-section">
+    <section class="home-section" aria-labelledby="beliebte-rechner">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Umrechner</p>
-
-          <h2>Einheiten einfach umrechnen</h2>
+          <p class="eyebrow">Schnell zum Ziel</p>
+          <h2 id="beliebte-rechner">Beliebte Rechner</h2>
         </div>
 
-        <a href="#alle-umrechner">
-          Alle Umrechner
-        </a>
+        <a href="#alle-rechner">Alle Rechner ansehen →</a>
+      </div>
+
+      <div class="tool-list">
+        {
+          featuredCalculators.map((calculator) => (
+            <a
+              href={`/rechner/${calculator.slug}/`}
+              class="tool-card"
+            >
+              <h3>{calculator.name}</h3>
+              <p>{calculator.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="home-section" aria-labelledby="beliebte-umrechner">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Einheiten umrechnen</p>
+          <h2 id="beliebte-umrechner">Beliebte Umrechner</h2>
+        </div>
+
+        <a href="#alle-umrechner">Alle Umrechner ansehen →</a>
       </div>
 
       <div class="tool-list">
@@ -50,7 +74,6 @@ const featuredCalculators = calculators.slice(0, 3);
               class="tool-card"
             >
               <h3>{converter.name}</h3>
-
               <p>{converter.description}</p>
             </a>
           ))
@@ -59,101 +82,67 @@ const featuredCalculators = calculators.slice(0, 3);
     </section>
 
     <section
-  class="home-section" id="alle-rechner">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">Rechner</p>
+      class="home-section"
+      id="alle-rechner"
+      aria-labelledby="rechner-uebersicht"
+    >
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Die vollständige Sammlung</p>
+          <h2 id="rechner-uebersicht">Alle Rechner</h2>
+        </div>
+      </div>
 
-      <h2>Praktische Rechner</h2>
-    </div>
-
-    <a href="#alle-rechner">
-      Alle Rechner
-    </a>
-  </div>
-
-  <div class="tool-list">
-    {
-      featuredCalculators.map((calculator) => (
-        <a
-          href={`/rechner/${calculator.slug}/`}
-          class="tool-card"
-        >
-          <h3>{calculator.name}</h3>
-
-          <p>{calculator.description}</p>
-        </a>
-      ))
-    }
-  </div>
-
-</section>
+      <div class="tool-list">
+        {
+          calculators.map((calculator) => (
+            <a
+              href={`/rechner/${calculator.slug}/`}
+              class="tool-card"
+            >
+              <h3>{calculator.name}</h3>
+              <p>{calculator.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
 
     <section
-  class="home-section"
-  id="alle-rechner"
->
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">Übersicht</p>
+      class="home-section"
+      id="alle-umrechner"
+      aria-labelledby="umrechner-uebersicht"
+    >
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Die vollständige Sammlung</p>
+          <h2 id="umrechner-uebersicht">Alle Umrechner</h2>
+        </div>
+      </div>
 
-      <h2>Alle Rechner</h2>
-    </div>
-  </div>
-
-  <div class="tool-list">
-    {
-      calculators.map((calculator) => (
-        <a
-          href={`/rechner/${calculator.slug}/`}
-          class="tool-card"
-        >
-          <h3>{calculator.name}</h3>
-
-          <p>{calculator.description}</p>
-        </a>
-      ))
-    }
-  </div>
-</section>
-
-<section
-  class="home-section"
-  id="alle-umrechner"
->
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">Übersicht</p>
-
-      <h2>Alle Umrechner</h2>
-    </div>
-  </div>
-
-  <div class="tool-list">
-    {
-      converters.map((converter) => (
-        <a
-          href={`/umrechner/${converter.slug}/`}
-          class="tool-card"
-        >
-          <h3>{converter.name}</h3>
-
-          <p>{converter.description}</p>
-        </a>
-      ))
-    }
-  </div>
-</section>
+      <div class="tool-list">
+        {
+          converters.map((converter) => (
+            <a
+              href={`/umrechner/${converter.slug}/`}
+              class="tool-card"
+            >
+              <h3>{converter.name}</h3>
+              <p>{converter.description}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
 
     <section class="home-section home-info">
       <p class="eyebrow">Warum Rechnero?</p>
-
       <h2>Schnell. Einfach. Kostenlos.</h2>
 
       <p>
-        Rechnero bietet praktische Rechner und Umrechner,
-        die ohne Anmeldung und direkt im Browser genutzt
-        werden können.
+        Rechnero bietet praktische Rechner und Umrechner, die ohne
+        Anmeldung und direkt im Browser genutzt werden können.
+        Wähle einfach das passende Werkzeug und lege los.
       </p>
     </section>
   </div>

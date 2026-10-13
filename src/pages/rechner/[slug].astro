@@ -1,3 +1,4 @@
+
 ---
 import Layout from "../../layouts/Layout.astro";
 import PercentageCalculator from "../../components/PercentageCalculator.astro";
@@ -26,9 +27,26 @@ export function getStaticPaths() {
 const { calculator } = Astro.props;
 
 const title = `${calculator.name} | Rechnero`;
+const description = calculator.seoDescription;
 
-const description =
-  calculator.seoDescription;
+const relatedCalculatorSlugs: Record<string, string[]> = {
+  percentage: ["rabattrechner", "mehrwertsteuerrechner", "dreisatzrechner"],
+  vat: ["prozentrechner", "rabattrechner"],
+  "rule-of-three": ["prozentrechner", "durchschnittsrechner"],
+  interest: ["zinseszinsrechner", "prozentrechner"],
+  discount: ["prozentrechner", "mehrwertsteuerrechner"],
+  average: ["dreisatzrechner", "bruchrechner"],
+  fraction: ["prozentrechner", "dreisatzrechner"],
+  age: ["datumsrechner"],
+  date: ["altersrechner"],
+  "compound-interest": ["zinsrechner", "prozentrechner"],
+};
+
+const relatedSlugs = relatedCalculatorSlugs[calculator.id] ?? [];
+
+const relatedCalculators = calculators.filter((item) =>
+  relatedSlugs.includes(item.slug),
+);
 ---
 
 <Layout title={title} description={description}>
@@ -38,44 +56,61 @@ const description =
 
       <h1>{calculator.name}</h1>
 
-      <p>
-        {calculator.description}
-      </p>
+      <p>{calculator.description}</p>
     </section>
 
     <section>
-     {
-  calculator.id === "percentage" ? (
-    <PercentageCalculator />
-  ) : calculator.id === "vat" ? (
-    <VatCalculator />
-  ) : calculator.id === "rule-of-three" ? (
-    <RuleOfThreeCalculator />
-  ) : calculator.id === "interest" ? (
-    <InterestCalculator />
-  ) : calculator.id === "discount" ? (
-    <DiscountCalculator />
-  ) : calculator.id === "average" ? (
-    <AverageCalculator />
-  ) : calculator.id === "fraction" ? (
-    <FractionCalculator />
-  ) : calculator.id === "age" ? (
-    <AgeCalculator />
-  ) : calculator.id === "date" ? (
-    <DateCalculator />
-  ) : calculator.id === "compound-interest" ? (
-  <CompoundInterestCalculator />
-) : null
-  
-}
+      {
+        calculator.id === "percentage" ? (
+          <PercentageCalculator />
+        ) : calculator.id === "vat" ? (
+          <VatCalculator />
+        ) : calculator.id === "rule-of-three" ? (
+          <RuleOfThreeCalculator />
+        ) : calculator.id === "interest" ? (
+          <InterestCalculator />
+        ) : calculator.id === "discount" ? (
+          <DiscountCalculator />
+        ) : calculator.id === "average" ? (
+          <AverageCalculator />
+        ) : calculator.id === "fraction" ? (
+          <FractionCalculator />
+        ) : calculator.id === "age" ? (
+          <AgeCalculator />
+        ) : calculator.id === "date" ? (
+          <DateCalculator />
+        ) : calculator.id === "compound-interest" ? (
+          <CompoundInterestCalculator />
+        ) : null
+      }
     </section>
 
     <section class="content">
       <h2>{calculator.name}</h2>
 
-      <p>
-        {calculator.intro}
-      </p>
+      <p>{calculator.intro}</p>
     </section>
+
+    {
+      relatedCalculators.length > 0 && (
+        <section class="home-section" aria-labelledby="weitere-rechner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Das könnte auch hilfreich sein</p>
+              <h2 id="weitere-rechner">Weitere Rechner</h2>
+            </div>
+          </div>
+
+          <div class="tool-list">
+            {relatedCalculators.map((item) => (
+              <a href={`/rechner/${item.slug}/`} class="tool-card">
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
   </div>
 </Layout>

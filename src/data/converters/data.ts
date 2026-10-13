@@ -1,20 +1,19 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const dataConverter: ConverterConfig = {
   id: "data",
-
   slug: "datenmenge",
-
   name: "Datenmengen-Umrechner",
 
   description:
-    "Datenmengen schnell und kostenlos zwischen Bit, Byte, Kilobyte, Megabyte, Gigabyte, Terabyte, Kibibyte, Mebibyte und Gibibyte umrechnen.",
+    "Rechne Bit, Byte, Kilobyte, Megabyte, Gigabyte, Terabyte, Kibibyte, Mebibyte und Gibibyte kostenlos um.",
 
   intro:
-    "Mit unserem Datenmengen-Umrechner kannst du digitale Datenmengen schnell und einfach zwischen dezimalen und binären Einheiten umrechnen.",
+    "Wie viele Megabyte sind ein Gigabyte oder wie viele Gibibyte entsprechen einer bestimmten Datenmenge? Mit dem Datenmengen-Umrechner kannst du digitale Speichergrößen schnell und einfach umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Wert ein und erhalte direkt das Ergebnis. Unterstützt werden Bit, Byte, Kilobyte, Megabyte, Gigabyte, Terabyte sowie die binären Einheiten Kibibyte, Mebibyte und Gibibyte. Dabei gilt: Dezimale Einheiten basieren auf dem Faktor 1.000, binäre Einheiten auf dem Faktor 1.024. Der Rechner hilft dir beispielsweise beim Vergleichen von Speicherkapazitäten, Dateigrößen und Datenangaben.",
 
   seoDescription:
-    "Datenmengen-Umrechner für Bit, Byte, KB, MB, GB, TB sowie KiB, MiB und GiB. Schnell, kostenlos und einfach online umrechnen.",
+    "Datenmengen-Umrechner für Bit, Byte, KB, MB, GB, TB sowie KiB, MiB und GiB. Digitale Speichergrößen kostenlos online umrechnen.",
 
   units: [
     {

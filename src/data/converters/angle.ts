@@ -1,15 +1,20 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const angleConverter: ConverterConfig = {
   id: "angle",
   slug: "winkel",
   name: "Winkelumrechner",
+
   description:
-    "Winkel schnell und kostenlos zwischen Grad, Radiant, Gon, Bogenminute und Bogensekunde umrechnen.",
+    "Rechne Grad, Radiant, Gon, Bogenminuten und Bogensekunden schnell und kostenlos um.",
+
   intro:
-    "Mit unserem Winkelumrechner kannst du Winkel schnell und einfach zwischen verschiedenen Winkeleinheiten umrechnen.",
+    "Wie viele Radiant entsprechen 90 Grad oder wie lassen sich Gon in Grad umrechnen? Mit dem Winkelumrechner kannst du verschiedene Winkeleinheiten schnell und einfach ineinander umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Winkel ein und erhalte direkt das Ergebnis. Unterstützt werden Grad, Radiant, Gon, Bogenminuten und Bogensekunden. Der Rechner ist beispielsweise für Mathematik, Geometrie, Navigation und technische Berechnungen hilfreich.",
+
   seoDescription:
-    "Winkelumrechner für Grad, Radiant, Gon, Bogenminute und Bogensekunde. Schnell, kostenlos und einfach online umrechnen.",
+    "Winkelumrechner für Grad, Radiant, Gon, Bogenminuten und Bogensekunden. Winkeleinheiten schnell und kostenlos online umrechnen.",
+
   units: [
     { id: "degree", name: "Grad", symbol: "°", factor: 1 },
     { id: "radian", name: "Radiant", symbol: "rad", factor: 180 / Math.PI },

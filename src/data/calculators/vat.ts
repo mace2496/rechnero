@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const vatCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const vatCalculator: CalculatorConfig = {
   slug: "mehrwertsteuerrechner",
   name: "Mehrwertsteuer-Rechner",
   description:
-    "Mehrwertsteuer, Nettopreis und Bruttopreis schnell und kostenlos berechnen.",
+    "Berechne Mehrwertsteuer, Nettopreise und Bruttopreise schnell und kostenlos.",
   intro:
-    "Mit unserem Mehrwertsteuer-Rechner kannst du Nettopreis, Bruttopreis und Mehrwertsteuerbetrag schnell und einfach berechnen.",
+    "Mit dem Mehrwertsteuer-Rechner kannst du aus einem Nettopreis den Bruttopreis und den enthaltenen Steuerbetrag ermitteln oder einen Bruttopreis in Netto und Mehrwertsteuer aufteilen. Wähle den passenden Steuersatz und berechne Preise beispielsweise für Einkäufe, Angebote oder Rechnungen. In Deutschland sind 19 % der reguläre und 7 % der ermäßigte Mehrwertsteuersatz; für bestimmte Waren und Leistungen gelten Sonderregelungen.",
   seoDescription:
-    "Mehrwertsteuer-Rechner für Netto, Brutto und Mehrwertsteuerbetrag. Berechne Preise schnell und einfach online.",
+    "Mehrwertsteuer-Rechner für Netto, Brutto und Steuerbetrag. Berechne Preise mit 19 % oder 7 % Mehrwertsteuer kostenlos online.",
 };

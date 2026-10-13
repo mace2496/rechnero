@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const ageCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const ageCalculator: CalculatorConfig = {
   slug: "altersrechner",
   name: "Altersrechner",
   description:
-    "Alter und genaue Zeitspanne zwischen zwei Daten schnell und einfach berechnen.",
+    "Berechne dein genaues Alter in Jahren, Monaten und Tagen kostenlos online.",
   intro:
-    "Mit unserem Altersrechner kannst du das genaue Alter zwischen einem Geburtsdatum und einem Stichtag berechnen.",
+    "Wie alt bist du genau? Mit dem Altersrechner kannst du dein Alter anhand deines Geburtsdatums und eines frei wählbaren Stichtags berechnen. Das Ergebnis zeigt dir, wie viele Jahre, Monate und Tage zwischen den beiden Daten liegen. So kannst du auch das Alter zu einem vergangenen oder zukünftigen Datum ermitteln.",
   seoDescription:
-    "Altersrechner zum Berechnen des genauen Alters zwischen zwei Daten. Jahre, Monate und Tage schnell und einfach online berechnen.",
+    "Altersrechner für dein genaues Alter in Jahren, Monaten und Tagen. Berechne die Zeitspanne zwischen Geburtsdatum und Stichtag kostenlos online.",
 };

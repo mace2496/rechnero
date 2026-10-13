@@ -1,3 +1,4 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const lengthConverter: ConverterConfig = {
@@ -6,14 +7,14 @@ export const lengthConverter: ConverterConfig = {
   name: "Längenumrechner",
 
   description:
-    "Längen schnell und kostenlos zwischen Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen umrechnen.",
+    "Rechne Längen kostenlos zwischen Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen um.",
 
   intro:
-    "Mit unserem Längenumrechner kannst du Längen schnell und einfach zwischen metrischen und angloamerikanischen Maßeinheiten umrechnen.",
+    "Wie viele Zentimeter sind ein Meter oder wie viele Kilometer entsprechen fünf Meilen? Mit dem Längenumrechner kannst du verschiedene Längeneinheiten schnell und einfach umrechnen. Wähle die Ausgangs- und Zieleinheit, gib den gewünschten Wert ein und erhalte direkt das Ergebnis. Der Rechner unterstützt metrische Einheiten wie Millimeter, Zentimeter, Meter und Kilometer sowie angloamerikanische Einheiten wie Zoll, Fuß, Yard und Meilen. Er eignet sich beispielsweise für den Alltag, die Schule, handwerkliche Arbeiten und internationale Maßangaben.",
 
   seoDescription:
-    "Längenumrechner für Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen. Schnell, kostenlos und einfach online umrechnen.",
-  
+    "Längenumrechner: Millimeter, Zentimeter, Meter, Kilometer, Zoll, Fuß, Yard und Meilen schnell und kostenlos online umrechnen.",
+
   units: [
     {
       id: "mm",

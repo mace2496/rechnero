@@ -1,3 +1,4 @@
+
 import type { CalculatorConfig } from "./index";
 
 export const discountCalculator: CalculatorConfig = {
@@ -5,9 +6,9 @@ export const discountCalculator: CalculatorConfig = {
   slug: "rabattrechner",
   name: "Rabattrechner",
   description:
-    "Rabattbetrag und reduzierten Preis schnell und einfach berechnen.",
+    "Berechne Rabatt, Ersparnis und reduzierten Preis kostenlos online.",
   intro:
-    "Mit unserem Rabattrechner kannst du Rabattbetrag und reduzierten Preis anhand des ursprünglichen Preises und des Rabatts berechnen.",
+    "Wie viel kostet ein Produkt nach 20 % Rabatt? Mit dem Rabattrechner kannst du die Ersparnis und den neuen Preis schnell ermitteln. Gib den ursprünglichen Preis und den Rabatt in Prozent ein, um zu sehen, wie viel du sparst und welchen Betrag du bezahlen musst. Der Rechner ist hilfreich beim Einkaufen, bei Sonderangeboten und beim Vergleichen von Preisen.",
   seoDescription:
-    "Rabattrechner zum Berechnen von Rabattbetrag und reduziertem Preis. Schnell, kostenlos und einfach online rechnen.",
+    "Rabattrechner für Rabatt in Prozent, Ersparnis und reduzierten Preis. Berechne schnell und kostenlos, wie viel du bei einem Angebot sparst.",
 };

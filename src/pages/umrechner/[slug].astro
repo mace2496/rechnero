@@ -1,3 +1,4 @@
+
 ---
 import Layout from "../../layouts/Layout.astro";
 import Converter from "../../components/Converter.astro";
@@ -17,8 +18,31 @@ export function getStaticPaths() {
 const { converter } = Astro.props;
 
 const title = `${converter.name} | Rechnero`;
-
 const description = converter.seoDescription;
+
+const relatedConverterSlugs: Record<string, string[]> = {
+  length: ["area", "volume", "speed"],
+  weight: ["force", "volume"],
+  temperature: ["energy", "power"],
+  volume: ["length", "area", "weight"],
+  area: ["length", "volume"],
+  speed: ["length", "time", "fuel"],
+  time: ["frequency", "speed"],
+  data: ["frequency", "time"],
+  pressure: ["force", "area"],
+  energy: ["power", "force", "temperature"],
+  power: ["energy", "force"],
+  force: ["pressure", "energy", "power"],
+  angle: ["frequency", "length"],
+  frequency: ["time", "angle", "data"],
+  fuel: ["speed", "volume"],
+};
+
+const relatedSlugs = relatedConverterSlugs[converter.id] ?? [];
+
+const relatedConverters = converters.filter((item) =>
+  relatedSlugs.includes(item.id),
+);
 ---
 
 <Layout title={title} description={description}>
@@ -28,9 +52,7 @@ const description = converter.seoDescription;
 
       <h1>{converter.name}</h1>
 
-      <p>
-        {converter.description}
-      </p>
+      <p>{converter.description}</p>
     </section>
 
     <section>
@@ -40,9 +62,7 @@ const description = converter.seoDescription;
     <section class="content">
       <h2>{converter.name}</h2>
 
-    <p>
-      {converter.intro}
-    </p>
+      <p>{converter.intro}</p>
 
       <h2>Verfügbare Einheiten</h2>
 
@@ -56,5 +76,27 @@ const description = converter.seoDescription;
         }
       </ul>
     </section>
+
+    {
+      relatedConverters.length > 0 && (
+        <section class="home-section" aria-labelledby="weitere-umrechner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Weitere Einheiten umrechnen</p>
+              <h2 id="weitere-umrechner">Weitere Umrechner</h2>
+            </div>
+          </div>
+
+          <div class="tool-list">
+            {relatedConverters.map((item) => (
+              <a href={`/umrechner/${item.slug}/`} class="tool-card">
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
   </div>
 </Layout>

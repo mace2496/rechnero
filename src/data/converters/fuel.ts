@@ -1,16 +1,22 @@
+
 import type { ConverterConfig } from "../../lib/converter";
 
 export const fuelConverter: ConverterConfig = {
   id: "fuel",
   slug: "kraftstoffverbrauch",
   name: "Kraftstoffverbrauch-Umrechner",
+
   description:
-    "Kraftstoffverbrauch schnell und kostenlos zwischen Liter pro 100 Kilometer, Kilometer pro Liter sowie US- und UK-Meilen pro Gallone umrechnen.",
+    "Rechne Kraftstoffverbrauch zwischen l/100 km, km/l, US-mpg und UK-mpg schnell und kostenlos um.",
+
   intro:
-    "Mit unserem Kraftstoffverbrauch-Umrechner kannst du Verbrauchswerte schnell und einfach zwischen verschiedenen Verbrauchseinheiten umrechnen.",
+    "Wie viel Liter pro 100 Kilometer entsprechen 30 Meilen pro Gallone? Mit dem Kraftstoffverbrauchs-Umrechner kannst du Verbrauchswerte zwischen den gebräuchlichen internationalen Einheiten umrechnen. Wähle die Ausgangs- und Zieleinheit, gib einen Wert ein und erhalte direkt das Ergebnis. Unterstützt werden Liter pro 100 Kilometer, Kilometer pro Liter sowie Meilen pro US-Gallone und britischer Gallone. Beachte: Bei l/100 km steht ein niedrigerer Wert für einen geringeren Verbrauch. Bei km/l und mpg bedeutet ein höherer Wert dagegen, dass du mit derselben Kraftstoffmenge weiter kommst. Der Rechner hilft dir beispielsweise beim Vergleichen von Fahrzeugen und beim Einordnen internationaler Verbrauchsangaben.",
+
   seoDescription:
-    "Kraftstoffverbrauch-Umrechner für l/100 km, km/l, mpg US und mpg UK. Schnell, kostenlos und einfach online umrechnen.",
+    "Kraftstoffverbrauch umrechnen: l/100 km, km/l, mpg US und mpg UK. Verbrauchswerte schnell und kostenlos online vergleichen.",
+
   type: "fuel",
+
   units: [
     {
       id: "l100km",
